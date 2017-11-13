@@ -1,0 +1,9 @@
+= form_for [@posts,@posts.comments.build] do |f|
+  .form-group
+    =f.label :mail, class:'form-label required'
+    =f.text_field :mail, class:'form-control'
+  .form-group
+    =f.label :content, class:'form-label required'
+    =f.text_area :content, class:'form-control'
+  .form-group
+    =f.submit "Poster", class: 'btn-btn-primary'

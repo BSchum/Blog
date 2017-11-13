@@ -1,0 +1,9 @@
+
+- @posts.each do |post|
+  .card.posts
+    .card-block
+      %h4.card-title
+        %a{href: post_path(post)}=post.title
+      %p.card-text=post.content
+      %span.badge.badge-default= post.category.name
+      %div= post.created_at

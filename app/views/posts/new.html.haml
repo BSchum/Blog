@@ -1,0 +1,23 @@
+%h2= "Nouveau post"
+- if @posts.errors.any?
+  .row
+    .col-xs-8.col-xs-offset-2.errors
+      %h2
+        = pluralize(@posts.errors.count, "error")
+        = t('errors', count: @listing.errors.count)
+      %ul
+        - @posts.errors.full_messages.each do |msg|
+          %li= msg
+
+= form_for @posts, class: 'form', html: {multipart: true} do |f|
+  .form-group
+    = f.label :category_id, class: 'form-label required'
+    = f.collection_select :category_id, Category.all, :id, :name, {}, {class: 'form-control'}
+  .form-group
+    =f.label :content, class:'form-label required'
+    =f.text_area :content, class:'form-control'
+  .form-group
+    =f.label :title, class:'form-label required'
+    =f.text_field :title, class:'form-control'
+  .form-group
+    =f.submit "Poster", class: 'btn-btn-primary'

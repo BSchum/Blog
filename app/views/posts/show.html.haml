@@ -1,0 +1,16 @@
+.row
+%h4.title
+  %p= "Titre: "+@posts.title
+%div
+  %p= "Contenu: "
+  %br/
+  %p= @posts.content
+%div
+  %span.badge.badge-default=@posts.category.name
+  - @posts.comments.each do |comment|
+    .panel.panel-default
+      .panel-heading
+        = comment.mail+" dis :"
+      .panel-body 
+        = comment.content
+%p= link_to "Add Comment", new_post_comment_path(post_id: @posts.id)

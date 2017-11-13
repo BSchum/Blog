@@ -1,0 +1,10 @@
+%nav.navbar.navbar-inverse.bg-inverse
+  .row
+    %a.navbar-brand{href: root_path}
+      ="Blog"
+    - if current_user
+      %a{href: destroy_user_session_path, class:'center-text pull-right col-1', 'data-method' => 'delete'}
+        ="Log out"
+    - else 
+      %a{href: new_user_session_path, class:'center-text pull-right col-1'}
+        ="Log in"
